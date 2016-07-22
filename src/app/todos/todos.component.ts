@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodosComponent implements OnInit {
   todos;
+  todo;
+  text;
   constructor() {}
 
   ngOnInit() {
@@ -19,6 +21,13 @@ export class TodosComponent implements OnInit {
         text: "revisar el coche"
       }
     ];
+    this.todo={text:""};
+  }
+
+  addTodo(){
+    //console.log(this);
+    let mitodo={text:this.todo.text};
+    this.todos.push(mitodo);
   }
 
 }
