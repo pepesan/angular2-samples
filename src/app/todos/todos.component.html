@@ -1,14 +1,24 @@
 <div>
-  <h4>Añadir tarea</h4>
-  <form (submit)="addTodo()" >
-    <input type="text" [(ngModel)]="todo.text"
-           [ngModelOptions]="{standalone: true}"/>
-    <!--button (click)="addTodo()">Añadir</button-->
-  </form>
+  <div *ngIf="appState=='default'">
+    <h4>Añadir tarea</h4>
+    <form (submit)="addTodo()" >
+      <input type="text" [(ngModel)]="todo.text"
+             [ngModelOptions]="{standalone: true}"/>
+      <!--button (click)="addTodo()">Añadir</button-->
+    </form>
+  </div>
+  <div *ngIf="appState=='edit'">
+    <h4>Modificar tarea</h4>
+    <form (submit)="updateTodo()" >
+      <input type="text" [(ngModel)]="todo.text"
+             [ngModelOptions]="{standalone: true}"/>
+      <!--button (click)="addTodo()">Añadir</button-->
+    </form>
+  </div>
   <h3>Listado de tareas</h3>
   <ul>
     <li *ngFor="let todo of todos">
-      {{todo.text}} <button (click)="deleteTodo(todo.text)" >Borrar</button>
+      <span (click)="editTodo(todo)">{{todo.text}}</span> <button (click)="deleteTodo(todo.text)" >Borrar</button>
     </li>
   </ul>
 </div>

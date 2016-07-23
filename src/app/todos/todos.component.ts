@@ -10,6 +10,8 @@ export class TodosComponent implements OnInit {
   todos;
   todo;
   text;
+  oldTodo;
+  appState="default";
   constructor(private _todoService:TodoService) {}
 
   ngOnInit() {
@@ -31,5 +33,26 @@ export class TodosComponent implements OnInit {
       }
     }
     this._todoService.removeTodo(texto);
+  }
+  editTodo(todo){
+    this.appState="edit";
+    //console.log(this.appState);
+    //console.log(todo);
+    this.todo.text=todo.text;
+    let mitodo={text:todo.text};
+    this.oldTodo=mitodo;
+  }
+  updateTodo(){
+    console.log("Updating todo...");
+    let mitodo={text:this.todo.text};
+    console.log(this.oldTodo);
+    console.log(mitodo);
+    for(var i=0;i<this.todos.length;i++){
+      var todo=this.todos[i];
+      if(todo.text==this.oldTodo.text){
+        todo.text=mitodo.text;
+      }
+    }
+    this._todoService.updateTodo(this.oldTodo,mitodo);
   }
 }
