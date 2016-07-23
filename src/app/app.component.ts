@@ -9,5 +9,5 @@ import {TodosComponent} from "./todos/todos.component"
   directives: [TodosComponent]
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'La aplicación funciona!';
 }
