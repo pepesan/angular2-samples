@@ -21,6 +21,7 @@ export class TodosComponent implements OnInit {
     //console.log(this);
     let mitodo={text:this.todo.text};
     this.todos.push(mitodo);
+    this._todoService.addTodo(mitodo);
   }
   deleteTodo(texto){
     for(var i=0;i<this.todos.length;i++){
@@ -29,5 +30,6 @@ export class TodosComponent implements OnInit {
         this.todos.splice(i,1);
       }
     }
+    this._todoService.removeTodo(texto);
   }
 }
