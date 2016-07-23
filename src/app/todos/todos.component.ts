@@ -13,14 +13,7 @@ export class TodosComponent implements OnInit {
   constructor(private _todoService:TodoService) {}
 
   ngOnInit() {
-    this.todos=[
-      {
-        text:"hacer la compra"
-      },
-      {
-        text: "revisar el coche"
-      }
-    ];
+    this.todos=this._todoService.getTodos();
     this.todo={text:""};
   }
 
